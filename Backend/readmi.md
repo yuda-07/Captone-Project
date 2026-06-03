@@ -1,23 +1,446 @@
-# Backend Architecture - MicroCred AI
+# 🚀 MicroCred AI Backend Architecture
 
 ## Sistem Penilaian Kelayakan Kredit UMKM Berbasis Deep Learning
 
-Backend bertugas sebagai pusat komunikasi antara Frontend, Database PostgreSQL, dan AI Inference API. Seluruh data pengguna diproses melalui Backend sebelum diteruskan ke model Deep Learning.
+Backend berfungsi sebagai pusat orkestrasi sistem yang menghubungkan Frontend, Database, Authentication Service, AI Inference Service, dan Monitoring Layer.
 
 ---
 
-# Backend Responsibilities
+# 🏛 High Level Architecture
 
-## 1. Authentication
+```mermaid
+flowchart TB
 
-Backend menangani:
+    User[👤 User UMKM]
 
-* Registrasi pengguna
-* Login pengguna
-* Verifikasi JWT Token
-* Proteksi endpoint
+    FE[🌐 Frontend React + Vite]
 
-Endpoint:
+    LB[⚖ API Gateway / Express Router]
+
+    AUTH[🔐 Authentication Service]
+
+    UMKM[🏪 UMKM Service]
+
+    PREDICT[🧠 Prediction Service]
+
+    AI[🤖 AI Inference API]
+
+    MODEL[(Deep Learning Model .keras)]
+
+    DB[(PostgreSQL Database)]
+
+    LOG[(Audit & Activity Log)]
+
+    User --> FE
+
+    FE --> LB
+
+    LB --> AUTH
+    LB --> UMKM
+    LB --> PREDICT
+
+    AUTH --> DB
+
+    UMKM --> DB
+
+    PREDICT --> AI
+
+    AI --> MODEL
+
+    AI --> PREDICT
+
+    PREDICT --> DB
+
+    AUTH --> LOG
+    UMKM --> LOG
+    PREDICT --> LOG
+```
+
+---
+
+# 🧠 Backend Core Responsibilities
+
+Backend bertanggung jawab untuk:
+
+* Authentication & Authorization
+* User Management
+* UMKM Profile Management
+* Financial Data Validation
+* AI Prediction Orchestration
+* Database Persistence
+* Error Handling
+* Audit Logging
+* API Security
+* Data Integrity
+
+---
+
+# 🔄 End To End System Flow
+
+```mermaid
+sequenceDiagram
+
+participant U as User
+participant F as Frontend
+participant B as Backend
+participant DB as PostgreSQL
+participant AI as AI Service
+participant M as Deep Learning Model
+
+U->>F: Input Data UMKM
+
+F->>B: POST /api/predict
+
+B->>B: Validate Request
+
+alt Data Invalid
+
+    B-->>F: 400 Validation Error
+
+else Data Valid
+
+    B->>DB: Save Request Log
+
+    B->>AI: Send Financial Data
+
+    AI->>M: Load Model
+
+    M-->>AI: Generate Prediction
+
+    AI-->>B: Credit Score
+
+    B->>DB: Save Prediction
+
+    B-->>F: Return Result
+
+end
+
+F-->>U: Display Credit Score
+```
+
+---
+
+# 🔐 Authentication Flow
+
+```mermaid
+flowchart TD
+
+A[User Register]
+--> B[Validate Input]
+
+B --> C{Valid?}
+
+C -->|No| D[Return Error]
+
+C -->|Yes| E[Hash Password]
+
+E --> F[Save User]
+
+F --> G[Success]
+
+G --> H[Login]
+
+H --> I[Verify Password]
+
+I --> J{Match?}
+
+J -->|No| K[Unauthorized]
+
+J -->|Yes| L[Generate JWT]
+
+L --> M[Return Access Token]
+
+M --> N[Protected Endpoint]
+
+N --> O[JWT Middleware]
+
+O --> P[Authorized]
+```
+
+---
+
+# 🧠 Credit Prediction Flow
+
+```mermaid
+flowchart TD
+
+A[Receive Financial Data]
+
+A --> B[Schema Validation]
+
+B --> C[Business Rule Validation]
+
+C --> D[Normalize Data]
+
+D --> E[Build Payload]
+
+E --> F[Call AI API]
+
+F --> G{AI Available?}
+
+G -->|No| H[Return Service Error]
+
+G -->|Yes| I[Receive Prediction]
+
+I --> J[Calculate Risk Category]
+
+J --> K[Generate Final Response]
+
+K --> L[Save History]
+
+L --> M[Return JSON]
+```
+
+---
+
+# 📊 Deep Learning Integration Flow
+
+```mermaid
+flowchart LR
+
+Backend
+
+--> Income[Monthly Income]
+
+Backend
+
+--> Expense[Monthly Expense]
+
+Backend
+
+--> Age[Business Age]
+
+Backend
+
+--> Late[Late Payment Count]
+
+Income --> AI
+Expense --> AI
+Age --> AI
+Late --> AI
+
+AI --> Preprocessing
+
+Preprocessing --> FeatureScaling
+
+FeatureScaling --> NeuralNetwork
+
+NeuralNetwork --> CreditScore
+
+CreditScore --> RiskClassification
+
+RiskClassification --> Backend
+```
+
+---
+
+# 🗄 Database Architecture
+
+```mermaid
+erDiagram
+
+USERS {
+
+uuid id
+string name
+string email
+string password
+timestamp created_at
+
+}
+
+UMKM_PROFILE {
+
+uuid id
+uuid user_id
+string business_name
+integer business_age
+bigint monthly_income
+bigint monthly_expense
+timestamp created_at
+
+}
+
+PREDICTION_HISTORY {
+
+uuid id
+uuid user_id
+integer credit_score
+string category
+timestamp prediction_date
+
+}
+
+AUDIT_LOG {
+
+uuid id
+uuid user_id
+string action
+timestamp created_at
+
+}
+
+USERS ||--o{ UMKM_PROFILE : owns
+USERS ||--o{ PREDICTION_HISTORY : generates
+USERS ||--o{ AUDIT_LOG : creates
+```
+
+---
+
+# 🌐 API Gateway Flow
+
+```mermaid
+flowchart TD
+
+Client
+
+--> Router
+
+Router --> AuthMiddleware
+
+AuthMiddleware --> ValidationMiddleware
+
+ValidationMiddleware --> Controller
+
+Controller --> Service
+
+Service --> Repository
+
+Repository --> PostgreSQL
+
+Repository --> AI Service
+
+Service --> Controller
+
+Controller --> Response
+```
+
+---
+
+# 📁 Backend Folder Structure
+
+```text
+backend
+│
+├── src
+│
+├── config
+│   ├── database.js
+│   ├── environment.js
+│   └── jwt.js
+│
+├── controllers
+│   ├── auth.controller.js
+│   ├── user.controller.js
+│   ├── umkm.controller.js
+│   └── prediction.controller.js
+│
+├── services
+│   ├── auth.service.js
+│   ├── user.service.js
+│   ├── umkm.service.js
+│   ├── prediction.service.js
+│   └── ai.service.js
+│
+├── repositories
+│   ├── user.repository.js
+│   ├── umkm.repository.js
+│   └── prediction.repository.js
+│
+├── middlewares
+│   ├── auth.middleware.js
+│   ├── validation.middleware.js
+│   ├── logger.middleware.js
+│   └── error.middleware.js
+│
+├── routes
+│   ├── auth.routes.js
+│   ├── user.routes.js
+│   ├── umkm.routes.js
+│   └── prediction.routes.js
+│
+├── validators
+│
+├── utils
+│
+├── logs
+│
+├── prisma
+│
+├── tests
+│
+├── app.js
+├── server.js
+└── package.json
+```
+
+---
+
+# ⚡ Deployment Architecture
+
+```mermaid
+flowchart TB
+
+User
+
+--> Vercel
+
+Vercel
+
+--> Render
+
+Render
+
+--> PostgreSQL
+
+Render
+
+--> FastAPI
+
+FastAPI
+
+--> TensorFlow
+
+TensorFlow
+
+--> KerasModel
+```
+
+---
+
+# 🛡 Security Layer
+
+## Authentication
+
+* JWT Access Token
+* Refresh Token
+
+## Password Security
+
+* bcrypt hashing
+* Salt Rounds
+
+## API Security
+
+* Helmet
+* CORS
+* Rate Limiting
+
+## Validation
+
+* express-validator
+* Request Sanitization
+
+## Logging
+
+* Winston Logger
+* Audit Trail
+
+---
+
+# 📌 Main Endpoints
+
+## Authentication
 
 ```http
 POST /api/auth/register
@@ -25,13 +448,7 @@ POST /api/auth/login
 GET  /api/auth/profile
 ```
 
----
-
-## 2. UMKM Management
-
-Backend menyimpan data UMKM.
-
-Endpoint:
+## UMKM
 
 ```http
 GET    /api/umkm
@@ -41,331 +458,46 @@ PUT    /api/umkm/:id
 DELETE /api/umkm/:id
 ```
 
----
-
-## 3. Credit Prediction
-
-Backend menerima data finansial dari Frontend kemudian mengirimkan data tersebut ke AI Service.
-
-Endpoint:
+## Prediction
 
 ```http
 POST /api/predict
+GET  /api/history
+GET  /api/history/:id
 ```
 
 ---
 
-## 4. Prediction History
+# 🎯 Backend Milestone
 
-Backend menyimpan seluruh hasil prediksi.
+### Sprint 1
 
-Endpoint:
+* Architecture Design
+* Database Design
+* API Contract
 
-```http
-GET /api/history
-GET /api/history/:id
-```
+### Sprint 2
 
----
+* Express Setup
+* PostgreSQL Setup
+* Authentication
 
-# Backend Technology Stack
+### Sprint 3
 
-| Component        | Technology        |
-| ---------------- | ----------------- |
-| Runtime          | Node.js           |
-| Framework        | Express.js        |
-| Database         | PostgreSQL        |
-| ORM              | Prisma ORM        |
-| Authentication   | JWT               |
-| Password Hashing | bcrypt            |
-| AI Communication | Axios             |
-| Environment      | dotenv            |
-| Validation       | express-validator |
-| API Testing      | Postman           |
-
----
-
-# High Level System Flow
-
-```text
-+-------------+
-|   Frontend  |
-| React + Vite|
-+------+------+ 
-       |
-       |
-       v
-+-------------+
-|   Backend   |
-| Express API |
-+------+------+ 
-       |
-       |
-       +-------------------+
-       |                   |
-       v                   v
-+-------------+   +----------------+
-| PostgreSQL  |   | AI Inference   |
-| Database    |   | FastAPI/Flask  |
-+-------------+   +-------+--------+
-                         |
-                         |
-                         v
-                 +---------------+
-                 | Deep Learning |
-                 |   Model .keras|
-                 +---------------+
-```
-
----
-
-# Detailed Prediction Flow
-
-```mermaid
-flowchart TD
-
-A[User Input Financial Data]
---> B[Frontend React]
-
-B --> C[POST /api/predict]
-
-C --> D[Backend Validation]
-
-D --> E{Valid Data?}
-
-E -->|No| F[Return Validation Error]
-
-E -->|Yes| G[Store Request Log]
-
-G --> H[Send Payload to AI API]
-
-H --> I[FastAPI Prediction Service]
-
-I --> J[Load Model Keras]
-
-J --> K[Preprocessing Data]
-
-K --> L[Neural Network Prediction]
-
-L --> M[Generate Credit Score]
-
-M --> N[Return Prediction Result]
-
-N --> O[Backend Receive Response]
-
-O --> P[Save Result to Database]
-
-P --> Q[Return JSON Response]
-
-Q --> R[Frontend Display Score]
-```
-
----
-
-# Authentication Flow
-
-```mermaid
-flowchart TD
-
-A[Register User]
---> B[Hash Password]
-
-B --> C[Save User Database]
-
-C --> D[Login]
-
-D --> E[Verify Password]
-
-E --> F[Generate JWT Token]
-
-F --> G[Return Token]
-
-G --> H[Frontend Save Token]
-
-H --> I[Protected API Request]
-
-I --> J[JWT Middleware]
-
-J --> K[Authorized]
-```
-
----
-
-# Database Schema
-
-## users
-
-```sql
-CREATE TABLE users (
-    id UUID PRIMARY KEY,
-    name VARCHAR(100),
-    email VARCHAR(100) UNIQUE,
-    password TEXT,
-    created_at TIMESTAMP
-);
-```
-
----
-
-## umkm_profiles
-
-```sql
-CREATE TABLE umkm_profiles (
-    id UUID PRIMARY KEY,
-    user_id UUID,
-    business_name VARCHAR(255),
-    business_age INTEGER,
-    monthly_income BIGINT,
-    monthly_expense BIGINT,
-    created_at TIMESTAMP
-);
-```
-
----
-
-## prediction_history
-
-```sql
-CREATE TABLE prediction_history (
-    id UUID PRIMARY KEY,
-    user_id UUID,
-    credit_score INTEGER,
-    category VARCHAR(50),
-    prediction_date TIMESTAMP
-);
-```
-
----
-
-# API Contract
-
-## Request
-
-```json
-{
-  "monthly_income": 5000000,
-  "monthly_expense": 2500000,
-  "business_age": 3,
-  "late_payment_count": 1
-}
-```
-
----
-
-## Response
-
-```json
-{
-  "success": true,
-  "credit_score": 825,
-  "category": "Layak",
-  "risk_level": "Low Risk"
-}
-```
-
----
-
-# Backend Folder Structure
-
-```text
-backend
-│
-├── src
-│   ├── controllers
-│   │   ├── auth.controller.js
-│   │   ├── umkm.controller.js
-│   │   └── prediction.controller.js
-│   │
-│   ├── routes
-│   │   ├── auth.routes.js
-│   │   ├── umkm.routes.js
-│   │   └── prediction.routes.js
-│   │
-│   ├── services
-│   │   ├── ai.service.js
-│   │   └── auth.service.js
-│   │
-│   ├── middlewares
-│   │   ├── auth.middleware.js
-│   │   └── error.middleware.js
-│   │
-│   ├── models
-│   │
-│   ├── config
-│   │   └── database.js
-│   │
-│   └── app.js
-│
-├── prisma
-│
-├── .env
-├── package.json
-├── server.js
-│
-└── README.md
-```
-
----
-
-# Security Layer
-
-1. JWT Authentication
-2. Password Hashing (bcrypt)
-3. Request Validation
-4. CORS Protection
-5. Environment Variables
-6. Error Handling Middleware
-7. SQL Injection Prevention melalui ORM
-
----
-
-# Deployment Architecture
-
-```mermaid
-flowchart LR
-
-A[Frontend Vercel]
---> B[Backend Express Render]
-
-B --> C[PostgreSQL Neon]
-
-B --> D[AI Service FastAPI]
-
-D --> E[Keras Model]
-```
-
----
-
-# Milestone Backend
-
-## Week 1
-
-* Menentukan API Contract
-* Mendesain Database
-* Mendesain Arsitektur
-
-## Week 2
-
-* Setup Express.js
-* Setup PostgreSQL
-* Membuat REST API
-
-## Week 3
-
-* Implementasi Authentication
 * CRUD UMKM
+* Validation Layer
 
-## Week 4
+### Sprint 4
 
-* Integrasi AI API
-* Menyimpan Hasil Prediksi
+* AI Integration
+* Prediction Service
 
-## Week 5
+### Sprint 5
 
-* Testing
-* Bug Fixing
+* Security Hardening
+* End-to-End Testing
 * Deployment
-* Dokumentasi
+* Documentation
 
 ```
 ```
