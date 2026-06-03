@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>MicroCred AI - Profile Settings</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet">
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-container": "#7c839b",
+                        "primary-fixed": "#dae2fd",
+                        "primary-fixed-dim": "#bec6e0",
+                        "on-surface-variant": "#45464d",
+                        "on-tertiary-container": "#98805d",
+                        "surface-dim": "#dcd9db",
+                        "on-surface": "#1b1b1d",
+                        "on-primary": "#ffffff",
+                        "on-tertiary-fixed-variant": "#574425",
+                        "on-secondary-fixed": "#001e2c",
+                        "inverse-primary": "#bec6e0",
+                        "on-background": "#1b1b1d",
+                        "inverse-on-surface": "#f3f0f2",
+                        "surface-bright": "#fcf8fa",
+                        "primary": "#000000",
+                        "background": "#fcf8fa",
+                        "tertiary-fixed": "#fcdeb5",
+                        "on-tertiary-fixed": "#271901",
+                        "inverse-surface": "#303032",
+                        "surface-container-highest": "#e4e2e4",
+                        "outline-variant": "#c6c6cd",
+                        "secondary-fixed": "#c4e7ff",
+                        "on-secondary": "#ffffff",
+                        "tertiary": "#000000",
+                        "on-primary-fixed": "#131b2e",
+                        "secondary-fixed-dim": "#7bd0ff",
+                        "on-error-container": "#93000a",
+                        "on-error": "#ffffff",
+                        "outline": "#76777d",
+                        "surface-container-high": "#eae7e9",
+                        "error-container": "#ffdad6",
+                        "surface-tint": "#565e74",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-container": "#004d6a",
+                        "tertiary-container": "#271901",
+                        "surface": "#fcf8fa",
+                        "on-primary-fixed-variant": "#3f465c",
+                        "surface-container-low": "#f6f3f5",
+                        "secondary": "#00668a",
+                        "error": "#ba1a1a",
+                        "primary-container": "#131b2e",
+                        "surface-variant": "#e4e2e4",
+                        "surface-container": "#f0edef",
+                        "tertiary-fixed-dim": "#dec29a",
+                        "secondary-container": "#40c2fd",
+                        "on-secondary-fixed-variant": "#004c69"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "stack-lg": "48px",
+                        "stack-md": "24px",
+                        "margin-mobile": "16px",
+                        "base": "8px",
+                        "container-max": "1280px",
+                        "margin-desktop": "40px",
+                        "stack-sm": "12px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Hanken Grotesk"],
+                        "label-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-lg": ["Hanken Grotesk"],
+                        "display": ["Hanken Grotesk"],
+                        "headline-lg-mobile": ["Hanken Grotesk"],
+                        "label-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "fontWeight": "500" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "display": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "36px", "fontWeight": "600" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+
+        body {
+            background-color: #fcf8fa;
+        }
+
+        .sidebar-active-indicator {
+            box-shadow: inset 4px 0 0 0 #c4e7ff;
+        }
+
+        .custom-shadow {
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+    </style>
+</head>
+
+<body class="font-body-md text-on-surface">
+    <div class="flex min-h-screen">
+        <!-- SideNavBar -->
+        <aside
+            class="fixed left-0 top-0 h-screen w-72 bg-primary-container dark:bg-primary-container shadow-lg flex flex-col py-stack-md z-50">
+            <div class="px-gutter mb-stack-lg">
+                <h1 class="text-headline-md font-headline-md text-on-primary font-bold">MicroCred AI</h1>
+                <p class="text-on-primary-container font-label-md text-label-md mt-2">Institutional Reliability</p>
+            </div>
+            <nav class="flex-grow">
+                <div class="space-y-1">
+                    <!-- Overview -->
+                    <a class="text-primary-fixed-dim flex items-center gap-base p-stack-sm opacity-80 hover:bg-primary/20 hover:opacity-100 transition-all font-label-md text-label-md px-gutter"
+                        href="#">
+                        <span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+                        <span>Overview</span>
+                    </a>
+                    <!-- New Analysis -->
+                    <a class="text-primary-fixed-dim flex items-center gap-base p-stack-sm opacity-80 hover:bg-primary/20 hover:opacity-100 transition-all font-label-md text-label-md px-gutter"
+                        href="#">
+                        <span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+                        <span>New Analysis</span>
+                    </a>
+                    <!-- History -->
+                    <a class="text-primary-fixed-dim flex items-center gap-base p-stack-sm opacity-80 hover:bg-primary/20 hover:opacity-100 transition-all font-label-md text-label-md px-gutter"
+                        href="#">
+                        <span class="material-symbols-outlined" data-icon="history">history</span>
+                        <span>History</span>
+                    </a>
+                    <!-- Profile (Active) -->
+                    <a class="bg-secondary text-on-secondary rounded-l-full flex items-center gap-base p-stack-sm border-l-4 border-secondary-fixed font-label-md text-label-md ml-4 pl-gutter transition-all translate-x-1 duration-200"
+                        href="#">
+                        <span class="material-symbols-outlined" data-icon="person"
+                            style="font-variation-settings: 'FILL' 1;">person</span>
+                        <span>Profile</span>
+                    </a>
+                </div>
+            </nav>
+            <div class="px-gutter border-t border-on-primary-fixed-variant/20 pt-stack-md space-y-4">
+                <div class="flex items-center gap-base">
+                    <img alt="User Profile" class="w-10 h-10 rounded-full object-cover"
+                        data-alt="A professional headshot of a mature businessman with a warm smile, representing an MSME owner. The photo is set against a clean, neutral background with soft, cinematic lighting that highlights the reliability and trustworthiness of the individual. The style is modern corporate photography."
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-UnzqzIwT9p474J5t3Lj8_OoJZGlJALxhXs54WL4CYneusU2hmtlvf1bi2JmvWJ1loiKND8_LO6xaCTLu3IcaYlDx2-zVk088RhR8TN7WE0Lau93SjEPPNeQqPCyGeexFtnEVYxCvL60sS65dd2JdHCZbHH0jFl5l9Eniz5ZxZFIjBk8OE8SFzGlLuWagDEM8pS14X80XKOfrxhBj80UTLH_QpTVhg7hsjZMt3Ve1USYBilrUfZyv713CAputHKtI1427cX_qiqE">
+                    <div class="overflow-hidden">
+                        <p class="text-on-primary font-bold truncate">MSME Owner</p>
+                        <p class="text-primary-fixed-dim text-label-sm font-label-sm">Verified Account</p>
+                    </div>
+                </div>
+                <button
+                    class="w-full text-primary-fixed-dim flex items-center gap-base p-stack-sm opacity-80 hover:bg-primary/20 hover:opacity-100 transition-all font-label-md text-label-md">
+                    <span class="material-symbols-outlined" data-icon="logout">logout</span>
+                    <span>Logout</span>
+                </button>
+            </div>
+        </aside>
+        <!-- Main Content Area -->
+        <main class="flex-grow ml-72">
+            <!-- Profile Header -->
+            <header class="bg-surface-container-lowest h-64 relative flex items-end px-margin-desktop pb-stack-md">
+                <div class="absolute inset-0 z-0">
+                    <img alt="Header Background" class="w-full h-full object-cover opacity-10"
+                        data-alt="A sophisticated, high-end abstract background featuring soft gradients of deep navy and subtle grey, creating a sense of professional depth. The lighting is ethereal and minimal, suggesting a high-tech financial institution's digital environment. The overall aesthetic is clean, minimalist, and premium, aligning with institutional reliability."
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuALA_sOOEE9gifexmSdA0059t-XGAqXyArx0j0bkZ8Jg6nspmXeKiB3YK7dFIhlKlEfj75CVL1qlfLk4SNc32VIsqWGWUaSs7pdM7-2dYRetEOdHBWoGFbLqgKhwZXZCRY8u06QCMRXzrybh8Bv33_5ldI23yc5jlHaW2hPTqn14j8wEhVB37AhVKLdEwDFHN7KXgFKqxc_ZqI422kP4ca74HQFAh2UVPEcd1BS1bgNm-7Bd2cHaQEQHvYSemRO9uf73KuNnNVfOdg">
+                    <div class="absolute inset-0 bg-gradient-to-t from-surface to-transparent"></div>
+                </div>
+                <div class="relative z-10 flex items-center gap-gutter w-full max-w-container-max mx-auto">
+                    <div class="relative group">
+                        <img alt="User Avatar"
+                            class="w-32 h-32 rounded-xl object-cover border-4 border-surface shadow-lg"
+                            data-alt="Close up professional portrait of a confident male entrepreneur, shot in high resolution. The lighting is balanced and soft, emphasizing a reliable persona. The background is a blurred office setting with cool tones, maintaining a modern and grounded financial atmosphere."
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuD0MeyYdSpHtEMq1SkLrRagiR7E9dMREqa0cXizTB2y4t-_eusQwzBBW3hqFciLjrUeNfKABZOzIwTAQ-8QJatLLXzYtWeR_-NnitG12Eu99wwOA_rzajzc1OncR9R7WubgVuEWCSFk-6OhohkHDOHQXnVJdb2yNa43oaLa5Qlgw9ZQJGBNaKCzRt2b3EMAgyoH_RPJvbFabMyz3LL3LTr4rXUy5mGGOct9707DPuK22Dfbfv-r5UpA_lzG6jZbeXlm6Umbwj_DH8w">
+                        <button
+                            class="absolute bottom-2 right-2 bg-primary text-on-primary p-2 rounded-lg shadow-md hover:scale-105 transition-transform">
+                            <span class="material-symbols-outlined text-[20px]"
+                                data-icon="photo_camera">photo_camera</span>
+                        </button>
+                    </div>
+                    <div class="flex-grow">
+                        <h2 class="font-headline-lg text-headline-lg text-primary">Ahmad Sulaiman</h2>
+                        <p class="text-on-surface-variant font-body-md text-body-md">ahmad.sulaiman@msme-group.id</p>
+                        <div class="mt-2 flex gap-2">
+                            <span
+                                class="bg-secondary-fixed text-on-secondary-fixed text-label-sm font-label-sm px-3 py-1 rounded-full">Pro
+                                Account</span>
+                            <span
+                                class="bg-surface-container-high text-on-surface-variant text-label-sm font-label-sm px-3 py-1 rounded-full">ID
+                                Verified</span>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <section class="max-w-container-max mx-auto px-margin-desktop py-stack-lg">
+                <div class="grid grid-cols-12 gap-gutter">
+                    <!-- Left Column: Navigation / Info -->
+                    <div class="col-span-12 lg:col-span-4 space-y-gutter">
+                        <div
+                            class="bg-surface-container-lowest p-stack-md rounded-xl custom-shadow border border-outline-variant/30">
+                            <h3 class="font-headline-md text-headline-md text-primary mb-stack-sm">Account Settings</h3>
+                            <nav class="space-y-1">
+                                <a class="flex items-center justify-between p-stack-sm rounded-lg bg-secondary/10 text-secondary font-bold group transition-all"
+                                    href="#">
+                                    <div class="flex items-center gap-base">
+                                        <span class="material-symbols-outlined" data-icon="person">person</span>
+                                        <span>Personal Information</span>
+                                    </div>
+                                    <span class="material-symbols-outlined text-[18px]"
+                                        data-icon="chevron_right">chevron_right</span>
+                                </a>
+                                <a class="flex items-center justify-between p-stack-sm rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-all"
+                                    href="#">
+                                    <div class="flex items-center gap-base">
+                                        <span class="material-symbols-outlined" data-icon="security">security</span>
+                                        <span>Security &amp; Privacy</span>
+                                    </div>
+                                    <span class="material-symbols-outlined text-[18px]"
+                                        data-icon="chevron_right">chevron_right</span>
+                                </a>
+                                <a class="flex items-center justify-between p-stack-sm rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-all"
+                                    href="#">
+                                    <div class="flex items-center gap-base">
+                                        <span class="material-symbols-outlined"
+                                            data-icon="notifications">notifications</span>
+                                        <span>Notifications</span>
+                                    </div>
+                                    <span class="material-symbols-outlined text-[18px]"
+                                        data-icon="chevron_right">chevron_right</span>
+                                </a>
+                                <a class="flex items-center justify-between p-stack-sm rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-all"
+                                    href="#">
+                                    <div class="flex items-center gap-base">
+                                        <span class="material-symbols-outlined" data-icon="payments">payments</span>
+                                        <span>Billing &amp; Credit</span>
+                                    </div>
+                                    <span class="material-symbols-outlined text-[18px]"
+                                        data-icon="chevron_right">chevron_right</span>
+                                </a>
+                            </nav>
+                        </div>
+                        <div
+                            class="bg-primary text-on-primary p-stack-md rounded-xl shadow-lg relative overflow-hidden">
+                            <div class="relative z-10">
+                                <p class="text-label-sm font-label-sm uppercase tracking-widest opacity-70 mb-2">Current
+                                    Credit Tier</p>
+                                <h4 class="text-headline-md font-headline-md mb-4">Elite Business</h4>
+                                <div class="w-full bg-on-primary/20 h-2 rounded-full mb-2">
+                                    <div class="bg-secondary-container w-[85%] h-full rounded-full"></div>
+                                </div>
+                                <p class="text-label-sm font-label-sm">850/1000 Trust Score</p>
+                            </div>
+                            <span
+                                class="material-symbols-outlined absolute -bottom-4 -right-4 text-[120px] opacity-10 pointer-events-none"
+                                data-icon="verified">verified</span>
+                        </div>
+                    </div>
+                    <!-- Right Column: Form -->
+                    <div class="col-span-12 lg:col-span-8">
+                        <div
+                            class="bg-surface-container-lowest p-gutter rounded-xl custom-shadow border border-outline-variant/30">
+                            <div class="mb-stack-md border-b border-outline-variant/30 pb-4">
+                                <h3 class="font-headline-md text-headline-md text-primary">Edit Profile</h3>
+                                <p class="text-on-surface-variant font-body-md text-body-md mt-1">Manage your account
+                                    identity and login credentials.</p>
+                            </div>
+                            <form class="space-y-gutter">
+                                <!-- Personal Info Grid -->
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+                                    <div class="space-y-2">
+                                        <label class="font-label-md text-label-md text-on-surface-variant ml-1">Full
+                                            Name</label>
+                                        <input
+                                            class="w-full h-12 px-4 bg-surface-container-low border-0 rounded-lg focus:ring-2 focus:ring-primary focus:bg-white transition-all text-body-md font-body-md"
+                                            type="text" value="Ahmad Sulaiman">
+                                    </div>
+                                    <div class="space-y-2">
+                                        <label class="font-label-md text-label-md text-on-surface-variant ml-1">Email
+                                            Address</label>
+                                        <input
+                                            class="w-full h-12 px-4 bg-surface-container-low border-0 rounded-lg focus:ring-2 focus:ring-primary focus:bg-white transition-all text-body-md font-body-md"
+                                            type="email" value="ahmad.sulaiman@msme-group.id">
+                                    </div>
+                                </div>
+                                <div class="space-y-2">
+                                    <label class="font-label-md text-label-md text-on-surface-variant ml-1">Phone
+                                        Number</label>
+                                    <input
+                                        class="w-full h-12 px-4 bg-surface-container-low border-0 rounded-lg focus:ring-2 focus:ring-primary focus:bg-white transition-all text-body-md font-body-md"
+                                        type="tel" value="+62 812 3456 7890">
+                                </div>
+                                <!-- Password Section -->
+                                <div class="pt-stack-md border-t border-outline-variant/30 space-y-gutter">
+                                    <h4 class="font-headline-md text-[18px] text-primary">Security Update</h4>
+                                    <div class="space-y-2">
+                                        <label class="font-label-md text-label-md text-on-surface-variant ml-1">Current
+                                            Password</label>
+                                        <input
+                                            class="w-full h-12 px-4 bg-surface-container-low border-0 rounded-lg focus:ring-2 focus:ring-primary focus:bg-white transition-all text-body-md font-body-md"
+                                            placeholder="••••••••" type="password">
+                                    </div>
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+                                        <div class="space-y-2">
+                                            <label class="font-label-md text-label-md text-on-surface-variant ml-1">New
+                                                Password</label>
+                                            <input
+                                                class="w-full h-12 px-4 bg-surface-container-low border-0 rounded-lg focus:ring-2 focus:ring-primary focus:bg-white transition-all text-body-md font-body-md"
+                                                placeholder="Enter new password" type="password">
+                                        </div>
+                                        <div class="space-y-2">
+                                            <label
+                                                class="font-label-md text-label-md text-on-surface-variant ml-1">Confirm
+                                                New Password</label>
+                                            <input
+                                                class="w-full h-12 px-4 bg-surface-container-low border-0 rounded-lg focus:ring-2 focus:ring-primary focus:bg-white transition-all text-body-md font-body-md"
+                                                placeholder="Confirm new password" type="password">
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Actions -->
+                                <div
+                                    class="pt-stack-md flex flex-col md:flex-row items-center justify-between gap-stack-md">
+                                    <button
+                                        class="text-error font-label-md text-label-md flex items-center gap-base hover:underline transition-all"
+                                        type="button">
+                                        <span class="material-symbols-outlined"
+                                            data-icon="delete_forever">delete_forever</span>
+                                        <span>Deactivate Account</span>
+                                    </button>
+                                    <div class="flex items-center gap-base w-full md:w-auto">
+                                        <button
+                                            class="px-gutter py-3 text-on-surface-variant font-label-md text-label-md hover:bg-surface-container-low rounded-lg transition-all w-1/2 md:w-auto"
+                                            type="reset">
+                                            Cancel
+                                        </button>
+                                        <button
+                                            class="px-8 py-3 bg-primary text-on-primary font-label-md text-label-md rounded-lg shadow-lg hover:opacity-90 active:scale-95 transition-all w-1/2 md:w-auto"
+                                            type="submit">
+                                            Simpan Perubahan
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <!-- Secondary Settings Block -->
+                        <div class="mt-gutter grid grid-cols-1 md:grid-cols-2 gap-gutter">
+                            <div
+                                class="bg-surface-container-lowest p-stack-md rounded-xl border border-outline-variant/30 flex items-center gap-stack-md">
+                                <div
+                                    class="w-12 h-12 rounded-full bg-secondary-fixed flex items-center justify-center text-on-secondary-fixed">
+                                    <span class="material-symbols-outlined" data-icon="shield">shield</span>
+                                </div>
+                                <div>
+                                    <h5 class="font-label-md text-label-md text-primary">Two-Factor Auth</h5>
+                                    <p class="text-label-sm font-label-sm text-on-surface-variant">Recommended for
+                                        security</p>
+                                </div>
+                                <div class="ml-auto">
+                                    <div
+                                        class="w-10 h-6 bg-surface-container-highest rounded-full relative cursor-pointer">
+                                        <div
+                                            class="absolute left-1 top-1 w-4 h-4 bg-white rounded-full shadow-sm transition-all translate-x-4 bg-secondary-container">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="bg-surface-container-lowest p-stack-md rounded-xl border border-outline-variant/30 flex items-center gap-stack-md">
+                                <div
+                                    class="w-12 h-12 rounded-full bg-tertiary-fixed flex items-center justify-center text-on-tertiary-fixed">
+                                    <span class="material-symbols-outlined" data-icon="mail">mail</span>
+                                </div>
+                                <div>
+                                    <h5 class="font-label-md text-label-md text-primary">Email Digest</h5>
+                                    <p class="text-label-sm font-label-sm text-on-surface-variant">Weekly credit
+                                        summaries</p>
+                                </div>
+                                <div class="ml-auto">
+                                    <div class="w-10 h-6 bg-secondary rounded-full relative cursor-pointer">
+                                        <div
+                                            class="absolute left-1 top-1 w-4 h-4 bg-white rounded-full shadow-sm transition-all translate-x-4">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    <!-- Footer -->
+    <footer
+        class="ml-72 w-auto px-margin-desktop py-stack-lg flex flex-col md:flex-row justify-between items-center bg-surface-container-highest dark:bg-surface-dim border-t border-outline-variant">
+        <div class="text-on-surface dark:text-on-surface-variant font-body-md text-body-md mb-4 md:mb-0">
+            © 2024 MicroCred AI. Institutional Reliability.
+        </div>
+        <div class="flex gap-gutter">
+            <a class="text-on-surface-variant font-body-md text-body-md hover:text-secondary underline transition-all"
+                href="#">Privacy Policy</a>
+            <a class="text-on-surface-variant font-body-md text-body-md hover:text-secondary underline transition-all"
+                href="#">Terms of Service</a>
+            <a class="text-on-surface-variant font-body-md text-body-md hover:text-secondary underline transition-all"
+                href="#">Contact Us</a>
+        </div>
+    </footer>
+</body>
+
+</html>

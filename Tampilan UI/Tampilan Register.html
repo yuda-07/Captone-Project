@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Daftar | MicroCred AI</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet">
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-container": "#7c839b",
+                        "primary-fixed": "#dae2fd",
+                        "primary-fixed-dim": "#bec6e0",
+                        "on-surface-variant": "#45464d",
+                        "on-tertiary-container": "#98805d",
+                        "surface-dim": "#dcd9db",
+                        "on-surface": "#1b1b1d",
+                        "on-primary": "#ffffff",
+                        "on-tertiary-fixed-variant": "#574425",
+                        "on-secondary-fixed": "#001e2c",
+                        "inverse-primary": "#bec6e0",
+                        "on-background": "#1b1b1d",
+                        "inverse-on-surface": "#f3f0f2",
+                        "surface-bright": "#fcf8fa",
+                        "primary": "#000000",
+                        "background": "#fcf8fa",
+                        "tertiary-fixed": "#fcdeb5",
+                        "on-tertiary-fixed": "#271901",
+                        "inverse-surface": "#303032",
+                        "surface-container-highest": "#e4e2e4",
+                        "outline-variant": "#c6c6cd",
+                        "secondary-fixed": "#c4e7ff",
+                        "on-secondary": "#ffffff",
+                        "tertiary": "#000000",
+                        "on-primary-fixed": "#131b2e",
+                        "secondary-fixed-dim": "#7bd0ff",
+                        "on-error-container": "#93000a",
+                        "on-error": "#ffffff",
+                        "outline": "#76777d",
+                        "surface-container-high": "#eae7e9",
+                        "error-container": "#ffdad6",
+                        "surface-tint": "#565e74",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-container": "#004d6a",
+                        "tertiary-container": "#271901",
+                        "surface": "#fcf8fa",
+                        "on-primary-fixed-variant": "#3f465c",
+                        "surface-container-low": "#f6f3f5",
+                        "secondary": "#00668a",
+                        "error": "#ba1a1a",
+                        "primary-container": "#131b2e",
+                        "surface-variant": "#e4e2e4",
+                        "surface-container": "#f0edef",
+                        "tertiary-fixed-dim": "#dec29a",
+                        "secondary-container": "#40c2fd",
+                        "on-secondary-fixed-variant": "#004c69"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "stack-lg": "48px",
+                        "stack-md": "24px",
+                        "margin-mobile": "16px",
+                        "base": "8px",
+                        "container-max": "1280px",
+                        "margin-desktop": "40px",
+                        "stack-sm": "12px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Hanken Grotesk"],
+                        "label-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-lg": ["Hanken Grotesk"],
+                        "display": ["Hanken Grotesk"],
+                        "headline-lg-mobile": ["Hanken Grotesk"],
+                        "label-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "fontWeight": "500" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "display": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "36px", "fontWeight": "600" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        .card-shadow {
+            shadow-color: rgba(0, 26, 46, 0.1);
+            box-shadow: 0 4px 20px 0 rgba(0, 26, 46, 0.1);
+        }
+    </style>
+</head>
+
+<body class="bg-surface font-body-md text-on-surface min-h-screen flex flex-col items-center">
+    <!-- Header / TopAppBar -->
+    <header class="w-full bg-surface-container-lowest shadow-sm z-50">
+        <div class="flex justify-between items-center px-margin-desktop w-full max-w-container-max mx-auto h-16">
+            <div class="text-headline-md font-headline-md font-extrabold text-primary">MicroCred AI</div>
+            <div class="hidden md:flex gap-stack-md items-center">
+                <a class="text-on-surface-variant font-medium hover:text-secondary transition-colors duration-200 font-body-md text-body-md"
+                    href="#">Beranda</a>
+                <a class="text-on-surface-variant font-medium hover:text-secondary transition-colors duration-200 font-body-md text-body-md"
+                    href="#">Cara Kerja</a>
+                <a class="text-on-surface-variant font-medium hover:text-secondary transition-colors duration-200 font-body-md text-body-md"
+                    href="#">Fitur</a>
+            </div>
+            <div class="flex gap-base">
+                <a class="px-gutter py-2 text-on-surface-variant font-medium hover:text-secondary transition-all font-label-md text-label-md"
+                    href="#">Masuk</a>
+                <a class="bg-primary text-on-primary px-gutter py-2 rounded-lg font-bold hover:opacity-90 active:scale-95 transition-all font-label-md text-label-md"
+                    href="#">Daftar</a>
+            </div>
+        </div>
+    </header>
+    <main
+        class="flex-grow flex items-center justify-center w-full px-margin-mobile py-stack-lg relative overflow-hidden">
+        <!-- Abstract Background Element -->
+        <div class="absolute -top-40 -right-40 w-96 h-96 bg-primary-fixed opacity-20 rounded-full blur-3xl"></div>
+        <div class="absolute -bottom-40 -left-40 w-96 h-96 bg-secondary-fixed opacity-20 rounded-full blur-3xl"></div>
+        <!-- Registration Card Container -->
+        <div class="w-full max-w-[480px] bg-white rounded-xl card-shadow p-stack-md md:p-stack-lg relative z-10">
+            <div class="flex flex-col items-center mb-stack-md text-center">
+                <div class="w-16 h-16 bg-primary-container rounded-full flex items-center justify-center mb-base">
+                    <span class="material-symbols-outlined text-primary-fixed text-4xl"
+                        data-icon="lock_open">lock_open</span>
+                </div>
+                <h1 class="font-headline-lg text-headline-lg text-primary">Buat Akun Anda</h1>
+                <p class="font-body-md text-body-md text-on-surface-variant mt-2">Memberdayakan UMKM dengan solusi
+                    kredit yang cerdas.</p>
+            </div>
+            <form class="space-y-base">
+                <!-- Full Name Field -->
+                <div class="space-y-2">
+                    <label class="font-label-md text-label-md text-on-surface-variant ml-1">Nama Lengkap</label>
+                    <div class="relative">
+                        <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline"
+                            data-icon="person">person</span>
+                        <input
+                            class="w-full pl-12 pr-4 py-3 bg-[#F8FAFC] border-0 rounded-lg focus:ring-2 focus:ring-primary focus:bg-white transition-all font-body-md text-body-md placeholder:text-outline-variant"
+                            placeholder="Nama Lengkap Anda" type="text">
+                    </div>
+                </div>
+                <!-- Email Field -->
+                <div class="space-y-2">
+                    <label class="font-label-md text-label-md text-on-surface-variant ml-1">Alamat Email</label>
+                    <div class="relative">
+                        <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline"
+                            data-icon="mail">mail</span>
+                        <input
+                            class="w-full pl-12 pr-4 py-3 bg-[#F8FAFC] border-0 rounded-lg focus:ring-2 focus:ring-primary focus:bg-white transition-all font-body-md text-body-md placeholder:text-outline-variant"
+                            placeholder="nama@bisnis.com" type="email">
+                    </div>
+                </div>
+                <!-- Password Field -->
+                <div class="space-y-2">
+                    <label class="font-label-md text-label-md text-on-surface-variant ml-1">Kata Sandi</label>
+                    <div class="relative">
+                        <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline"
+                            data-icon="key">key</span>
+                        <input
+                            class="w-full pl-12 pr-4 py-3 bg-[#F8FAFC] border-0 rounded-lg focus:ring-2 focus:ring-primary focus:bg-white transition-all font-body-md text-body-md placeholder:text-outline-variant"
+                            placeholder="••••••••" type="password">
+                    </div>
+                </div>
+                <!-- Confirm Password Field -->
+                <div class="space-y-2">
+                    <label class="font-label-md text-label-md text-on-surface-variant ml-1">Konfirmasi Kata
+                        Sandi</label>
+                    <div class="relative">
+                        <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline"
+                            data-icon="verified_user">verified_user</span>
+                        <input
+                            class="w-full pl-12 pr-4 py-3 bg-[#F8FAFC] border-0 rounded-lg focus:ring-2 focus:ring-primary focus:bg-white transition-all font-body-md text-body-md placeholder:text-outline-variant"
+                            placeholder="••••••••" type="password">
+                    </div>
+                </div>
+                <!-- Terms & Conditions (Contextual Addition) -->
+                <div class="flex items-start gap-3 py-2">
+                    <input class="mt-1 rounded text-primary focus:ring-primary" type="checkbox">
+                    <p class="font-label-sm text-label-sm text-on-surface-variant">Dengan mendaftar, saya setuju dengan
+                        <a class="text-secondary hover:underline" href="#">Syarat Layanan</a> dan <a
+                            class="text-secondary hover:underline" href="#">Kebijakan Privasi</a>.</p>
+                </div>
+                <!-- Register Button -->
+                <button
+                    class="w-full bg-primary text-on-primary py-4 rounded-lg font-headline-md text-headline-md hover:bg-opacity-90 active:scale-[0.98] transition-all mt-4 flex items-center justify-center gap-2"
+                    type="submit">Daftar Sekarang <span class="material-symbols-outlined"
+                        data-icon="arrow_forward">arrow_forward</span></button>
+            </form>
+            <div class="mt-stack-md pt-stack-md border-t border-outline-variant flex flex-col items-center gap-base">
+                <div class="flex items-center gap-2 font-body-md text-body-md text-on-surface-variant">Sudah punya akun?
+                    <a class="text-primary font-bold hover:text-secondary transition-colors duration-200"
+                        href="#">Login</a></div>
+                <a class="flex items-center gap-1 font-label-md text-label-md text-on-surface-variant hover:text-primary transition-all"
+                    href="#"><span class="material-symbols-outlined text-sm"
+                        data-icon="chevron_left">chevron_left</span> Kembali ke Login</a>
+            </div>
+        </div>
+    </main>
+    <!-- Footer -->
+    <footer class="w-full bg-surface-container-highest border-t border-outline-variant">
+        <div
+            class="w-full px-margin-desktop py-stack-md flex flex-col md:flex-row justify-between items-center max-w-container-max mx-auto gap-stack-sm">
+            <div class="font-body-md text-body-md text-on-surface">© 2024 MicroCred AI. Keandalan Institusional.</div>
+            <div class="flex gap-gutter">
+                <a class="text-on-surface-variant hover:text-secondary underline transition-all font-body-md text-body-md"
+                    href="#">Kebijakan Privasi</a>
+                <a class="text-on-surface-variant hover:text-secondary underline transition-all font-body-md text-body-md"
+                    href="#">Syarat Layanan</a>
+                <a class="text-on-surface-variant hover:text-secondary underline transition-all font-body-md text-body-md"
+                    href="#">Hubungi Kami</a>
+            </div>
+        </div>
+    </footer>
+    <!-- Imagery / Background Logic -->
+    <div class="fixed inset-0 pointer-events-none -z-10 opacity-30">
+        <img class="w-full h-full object-cover grayscale mix-blend-overlay"
+            data-alt="A sophisticated, high-end financial office environment with clean architectural lines and soft morning light streaming through large windows. The scene captures a sense of stability and institutional reliability, reflecting a modern corporate aesthetic. The visual tone is minimalist and professional, utilizing a palette of light grays and crisp whites to emphasize transparency and technological optimism."
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCiqXciWHlxX002Q1mLNIiad-cF5QkcES3b06MMCuztlLpmo8_IF5h9PqYDCWmpEtUiZTSQV9hU1ENUZ-xaPUgVuBrluu71HV4kwcRg1wix3H5SRvMOt_afDr6tc6Wvv2hQRhlSby6q1XMh387TzdokR2lxArPP2Ln85kj9GGS9zcfeH0O5RGcDoSPNbrtmILhCALK9gpdZdsArA3m238Y0Krpn1NlNAnW6bSB4B-vA8py82JtInXsW4Dp0DbLW-buSDby0aHK4qS4">
+    </div>
+</body>
+
+</html>

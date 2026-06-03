@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>MicroCred AI - History</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet">
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-container": "#7c839b",
+                        "primary-fixed": "#dae2fd",
+                        "primary-fixed-dim": "#bec6e0",
+                        "on-surface-variant": "#45464d",
+                        "on-tertiary-container": "#98805d",
+                        "surface-dim": "#dcd9db",
+                        "on-surface": "#1b1b1d",
+                        "on-primary": "#ffffff",
+                        "on-tertiary-fixed-variant": "#574425",
+                        "on-secondary-fixed": "#001e2c",
+                        "inverse-primary": "#bec6e0",
+                        "on-background": "#1b1b1d",
+                        "inverse-on-surface": "#f3f0f2",
+                        "surface-bright": "#fcf8fa",
+                        "primary": "#000000",
+                        "background": "#fcf8fa",
+                        "tertiary-fixed": "#fcdeb5",
+                        "on-tertiary-fixed": "#271901",
+                        "inverse-surface": "#303032",
+                        "surface-container-highest": "#e4e2e4",
+                        "outline-variant": "#c6c6cd",
+                        "secondary-fixed": "#c4e7ff",
+                        "on-secondary": "#ffffff",
+                        "tertiary": "#000000",
+                        "on-primary-fixed": "#131b2e",
+                        "secondary-fixed-dim": "#7bd0ff",
+                        "on-error-container": "#93000a",
+                        "on-error": "#ffffff",
+                        "outline": "#76777d",
+                        "surface-container-high": "#eae7e9",
+                        "error-container": "#ffdad6",
+                        "surface-tint": "#565e74",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-container": "#004d6a",
+                        "tertiary-container": "#271901",
+                        "surface": "#fcf8fa",
+                        "on-primary-fixed-variant": "#3f465c",
+                        "surface-container-low": "#f6f3f5",
+                        "secondary": "#00668a",
+                        "error": "#ba1a1a",
+                        "primary-container": "#131b2e",
+                        "surface-variant": "#e4e2e4",
+                        "surface-container": "#f0edef",
+                        "tertiary-fixed-dim": "#dec29a",
+                        "secondary-container": "#40c2fd",
+                        "on-secondary-fixed-variant": "#004c69"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "stack-lg": "48px",
+                        "stack-md": "24px",
+                        "margin-mobile": "16px",
+                        "base": "8px",
+                        "container-max": "1280px",
+                        "margin-desktop": "40px",
+                        "stack-sm": "12px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Hanken Grotesk"],
+                        "label-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-lg": ["Hanken Grotesk"],
+                        "display": ["Hanken Grotesk"],
+                        "headline-lg-mobile": ["Hanken Grotesk"],
+                        "label-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "fontWeight": "500" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "display": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "36px", "fontWeight": "600" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        body {
+            background-color: #fcf8fa;
+        }
+    </style>
+</head>
+
+<body class="font-body-md text-on-surface">
+    <div class="flex min-h-screen">
+        <!-- SideNavBar -->
+        <aside
+            class="fixed left-0 top-0 h-screen w-72 bg-primary-container dark:bg-primary-container shadow-lg flex flex-col py-stack-md z-50">
+            <div class="px-gutter mb-stack-lg">
+                <span class="text-headline-md font-headline-md text-on-primary font-bold">MicroCred AI</span>
+            </div>
+            <div class="px-base mb-stack-md">
+                <div class="flex items-center gap-base p-stack-sm mb-base">
+                    <div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center">
+                        <span class="material-symbols-outlined text-on-secondary-container"
+                            data-icon="person">person</span>
+                    </div>
+                    <div>
+                        <p class="font-label-md text-label-md text-on-primary">MSME Owner</p>
+                        <p class="text-[12px] text-primary-fixed-dim opacity-70">Verified Account</p>
+                    </div>
+                </div>
+                <button
+                    class="w-full bg-secondary text-on-secondary py-stack-sm rounded-lg font-label-md flex items-center justify-center gap-base hover:bg-secondary/90 transition-all">
+                    <span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+                    New Analysis
+                </button>
+            </div>
+            <nav class="flex-1">
+                <ul class="space-y-1">
+                    <li>
+                        <a class="text-primary-fixed-dim flex items-center gap-base p-stack-sm opacity-80 hover:bg-primary/20 hover:opacity-100 transition-all mx-base rounded-lg"
+                            href="#">
+                            <span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+                            <span class="font-label-md text-label-md">Overview</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="text-primary-fixed-dim flex items-center gap-base p-stack-sm opacity-80 hover:bg-primary/20 hover:opacity-100 transition-all mx-base rounded-lg"
+                            href="#">
+                            <span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+                            <span class="font-label-md text-label-md">New Analysis</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="bg-secondary text-on-secondary rounded-l-full flex items-center gap-base p-stack-sm border-l-4 border-secondary-fixed mx-base"
+                            href="#">
+                            <span class="material-symbols-outlined" data-icon="history"
+                                style="font-variation-settings: 'FILL' 1;">history</span>
+                            <span class="font-label-md text-label-md">History</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="text-primary-fixed-dim flex items-center gap-base p-stack-sm opacity-80 hover:bg-primary/20 hover:opacity-100 transition-all mx-base rounded-lg"
+                            href="#">
+                            <span class="material-symbols-outlined" data-icon="person">person</span>
+                            <span class="font-label-md text-label-md">Profile</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="mt-auto px-base">
+                <a class="text-primary-fixed-dim flex items-center gap-base p-stack-sm opacity-80 hover:bg-primary/20 hover:opacity-100 transition-all rounded-lg"
+                    href="#">
+                    <span class="material-symbols-outlined" data-icon="logout">logout</span>
+                    <span class="font-label-md text-label-md">Logout</span>
+                </a>
+            </div>
+        </aside>
+        <!-- Main Content -->
+        <main class="flex-1 ml-72">
+            <header class="h-16 flex justify-between items-center px-margin-desktop w-full max-w-container-max mx-auto">
+                <h1 class="font-headline-md text-headline-md text-primary">Analysis History</h1>
+                <div class="flex items-center gap-gutter">
+                    <div class="relative">
+                        <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline"
+                            data-icon="search">search</span>
+                        <input
+                            class="pl-10 pr-4 py-2 bg-surface-container-low border-none rounded-lg text-body-md focus:ring-2 focus:ring-secondary w-64"
+                            placeholder="Search by ID or business name" type="text">
+                    </div>
+                    <button class="flex items-center gap-base text-on-surface-variant font-label-md">
+                        <span class="material-symbols-outlined" data-icon="filter_list">filter_list</span>
+                        Filters
+                    </button>
+                </div>
+            </header>
+            <div class="px-margin-desktop py-stack-md max-w-container-max mx-auto">
+                <!-- Analysis Stats/Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter mb-stack-lg">
+                    <div
+                        class="bg-surface-container-lowest p-stack-md rounded-xl shadow-sm border border-outline-variant/30">
+                        <p class="text-label-sm text-outline uppercase tracking-wider mb-base">Total Analyzed</p>
+                        <h3 class="font-headline-md text-headline-md text-primary">128</h3>
+                        <p class="text-label-sm text-secondary mt-1">+12% from last month</p>
+                    </div>
+                    <div
+                        class="bg-surface-container-lowest p-stack-md rounded-xl shadow-sm border border-outline-variant/30">
+                        <p class="text-label-sm text-outline uppercase tracking-wider mb-base">Avg. Credit Score</p>
+                        <h3 class="font-headline-md text-headline-md text-secondary">742</h3>
+                        <p class="text-label-sm text-on-surface-variant mt-1">Institutional Grade</p>
+                    </div>
+                    <div
+                        class="bg-surface-container-lowest p-stack-md rounded-xl shadow-sm border border-outline-variant/30">
+                        <p class="text-label-sm text-outline uppercase tracking-wider mb-base">Eligibility Rate</p>
+                        <h3 class="font-headline-md text-headline-md text-primary">84.5%</h3>
+                        <p class="text-label-sm text-on-surface-variant mt-1">High conversion</p>
+                    </div>
+                </div>
+                <!-- Filters & Action Bar -->
+                <div
+                    class="flex flex-col md:flex-row justify-between items-start md:items-center gap-stack-sm mb-stack-md">
+                    <div class="flex items-center gap-base">
+                        <select
+                            class="bg-surface-container-low border-none rounded-lg text-label-md py-2 px-4 focus:ring-1 focus:ring-secondary">
+                            <option>All Status</option>
+                            <option>Eligible</option>
+                            <option>Risky</option>
+                            <option>Pending</option>
+                        </select>
+                        <select
+                            class="bg-surface-container-low border-none rounded-lg text-label-md py-2 px-4 focus:ring-1 focus:ring-secondary">
+                            <option>Last 30 Days</option>
+                            <option>Last Quarter</option>
+                            <option>Year to Date</option>
+                        </select>
+                    </div>
+                    <button class="text-secondary font-label-md flex items-center gap-base">
+                        <span class="material-symbols-outlined" data-icon="download">download</span>
+                        Export CSV
+                    </button>
+                </div>
+                <!-- Data Table -->
+                <div
+                    class="bg-surface-container-lowest rounded-xl shadow-sm border border-outline-variant/30 overflow-hidden">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="bg-surface-container-low border-b border-outline-variant">
+                                <th class="py-stack-sm px-gutter font-label-md text-on-surface-variant">Analysis ID</th>
+                                <th class="py-stack-sm px-gutter font-label-md text-on-surface-variant">Date</th>
+                                <th class="py-stack-sm px-gutter font-label-md text-on-surface-variant">Entity Name</th>
+                                <th class="py-stack-sm px-gutter font-label-md text-on-surface-variant text-center">
+                                    Score</th>
+                                <th class="py-stack-sm px-gutter font-label-md text-on-surface-variant">Status</th>
+                                <th class="py-stack-sm px-gutter font-label-md text-on-surface-variant text-right">
+                                    Action</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-outline-variant/30">
+                            <!-- Row 1 -->
+                            <tr class="hover:bg-surface-container-low transition-colors group">
+                                <td class="py-stack-md px-gutter">
+                                    <span class="font-label-md text-primary">#MC-89210</span>
+                                </td>
+                                <td class="py-stack-md px-gutter">
+                                    <span class="text-body-md text-on-surface-variant">Oct 24, 2024</span>
+                                </td>
+                                <td class="py-stack-md px-gutter">
+                                    <span class="font-label-md text-on-surface">AgroConnect Logistics</span>
+                                </td>
+                                <td class="py-stack-md px-gutter text-center">
+                                    <span
+                                        class="inline-flex items-center justify-center w-12 h-12 rounded-full border-4 border-secondary/20 text-secondary font-bold text-label-md">785</span>
+                                </td>
+                                <td class="py-stack-md px-gutter">
+                                    <span
+                                        class="inline-flex items-center px-3 py-1 rounded-full bg-secondary-fixed text-on-secondary-fixed text-label-sm">
+                                        <span class="w-2 h-2 rounded-full bg-secondary mr-2"></span>
+                                        Eligible
+                                    </span>
+                                </td>
+                                <td class="py-stack-md px-gutter text-right">
+                                    <button
+                                        class="text-secondary font-label-md hover:underline inline-flex items-center gap-1">
+                                        Details
+                                        <span class="material-symbols-outlined text-[18px]"
+                                            data-icon="chevron_right">chevron_right</span>
+                                    </button>
+                                </td>
+                            </tr>
+                            <!-- Row 2 -->
+                            <tr class="hover:bg-surface-container-low transition-colors group">
+                                <td class="py-stack-md px-gutter">
+                                    <span class="font-label-md text-primary">#MC-89195</span>
+                                </td>
+                                <td class="py-stack-md px-gutter">
+                                    <span class="text-body-md text-on-surface-variant">Oct 22, 2024</span>
+                                </td>
+                                <td class="py-stack-md px-gutter">
+                                    <span class="font-label-md text-on-surface">Urban Spice Cafe</span>
+                                </td>
+                                <td class="py-stack-md px-gutter text-center">
+                                    <span
+                                        class="inline-flex items-center justify-center w-12 h-12 rounded-full border-4 border-error/20 text-error font-bold text-label-md">410</span>
+                                </td>
+                                <td class="py-stack-md px-gutter">
+                                    <span
+                                        class="inline-flex items-center px-3 py-1 rounded-full bg-error-container text-on-error-container text-label-sm">
+                                        <span class="w-2 h-2 rounded-full bg-error mr-2"></span>
+                                        Risky
+                                    </span>
+                                </td>
+                                <td class="py-stack-md px-gutter text-right">
+                                    <button
+                                        class="text-secondary font-label-md hover:underline inline-flex items-center gap-1">
+                                        Details
+                                        <span class="material-symbols-outlined text-[18px]"
+                                            data-icon="chevron_right">chevron_right</span>
+                                    </button>
+                                </td>
+                            </tr>
+                            <!-- Row 3 -->
+                            <tr class="hover:bg-surface-container-low transition-colors group">
+                                <td class="py-stack-md px-gutter">
+                                    <span class="font-label-md text-primary">#MC-89144</span>
+                                </td>
+                                <td class="py-stack-md px-gutter">
+                                    <span class="text-body-md text-on-surface-variant">Oct 21, 2024</span>
+                                </td>
+                                <td class="py-stack-md px-gutter">
+                                    <span class="font-label-md text-on-surface">Handicraft Collective</span>
+                                </td>
+                                <td class="py-stack-md px-gutter text-center">
+                                    <span
+                                        class="inline-flex items-center justify-center w-12 h-12 rounded-full border-4 border-secondary/20 text-secondary font-bold text-label-md">655</span>
+                                </td>
+                                <td class="py-stack-md px-gutter">
+                                    <span
+                                        class="inline-flex items-center px-3 py-1 rounded-full bg-secondary-fixed text-on-secondary-fixed text-label-sm">
+                                        <span class="w-2 h-2 rounded-full bg-secondary mr-2"></span>
+                                        Eligible
+                                    </span>
+                                </td>
+                                <td class="py-stack-md px-gutter text-right">
+                                    <button
+                                        class="text-secondary font-label-md hover:underline inline-flex items-center gap-1">
+                                        Details
+                                        <span class="material-symbols-outlined text-[18px]"
+                                            data-icon="chevron_right">chevron_right</span>
+                                    </button>
+                                </td>
+                            </tr>
+                            <!-- Row 4 -->
+                            <tr class="hover:bg-surface-container-low transition-colors group">
+                                <td class="py-stack-md px-gutter">
+                                    <span class="font-label-md text-primary">#MC-89021</span>
+                                </td>
+                                <td class="py-stack-md px-gutter">
+                                    <span class="text-body-md text-on-surface-variant">Oct 19, 2024</span>
+                                </td>
+                                <td class="py-stack-md px-gutter">
+                                    <span class="font-label-md text-on-surface">TechFix Solutions</span>
+                                </td>
+                                <td class="py-stack-md px-gutter text-center">
+                                    <span
+                                        class="inline-flex items-center justify-center w-12 h-12 rounded-full border-4 border-outline/20 text-on-surface-variant font-bold text-label-md">Pending</span>
+                                </td>
+                                <td class="py-stack-md px-gutter">
+                                    <span
+                                        class="inline-flex items-center px-3 py-1 rounded-full bg-surface-container-highest text-on-surface-variant text-label-sm">
+                                        <span class="w-2 h-2 rounded-full bg-outline mr-2"></span>
+                                        Pending
+                                    </span>
+                                </td>
+                                <td class="py-stack-md px-gutter text-right">
+                                    <button
+                                        class="text-secondary font-label-md hover:underline inline-flex items-center gap-1">
+                                        Details
+                                        <span class="material-symbols-outlined text-[18px]"
+                                            data-icon="chevron_right">chevron_right</span>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <!-- Pagination -->
+                    <div class="px-gutter py-stack-sm flex justify-between items-center bg-surface-container-low">
+                        <p class="text-label-sm text-on-surface-variant">Showing 1-10 of 128 results</p>
+                        <div class="flex items-center gap-base">
+                            <button
+                                class="w-8 h-8 rounded flex items-center justify-center text-outline hover:bg-surface-container-highest transition-all">
+                                <span class="material-symbols-outlined" data-icon="chevron_left">chevron_left</span>
+                            </button>
+                            <button class="w-8 h-8 rounded bg-secondary text-on-secondary font-label-md">1</button>
+                            <button
+                                class="w-8 h-8 rounded text-on-surface-variant font-label-md hover:bg-surface-container-highest">2</button>
+                            <button
+                                class="w-8 h-8 rounded text-on-surface-variant font-label-md hover:bg-surface-container-highest">3</button>
+                            <span class="text-outline">...</span>
+                            <button
+                                class="w-8 h-8 rounded text-on-surface-variant font-label-md hover:bg-surface-container-highest">13</button>
+                            <button
+                                class="w-8 h-8 rounded flex items-center justify-center text-outline hover:bg-surface-container-highest transition-all">
+                                <span class="material-symbols-outlined" data-icon="chevron_right">chevron_right</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Footer -->
+            <footer
+                class="w-full px-margin-desktop py-stack-lg flex flex-col md:flex-row justify-between items-center mt-stack-lg border-t border-outline-variant bg-surface-container-highest">
+                <p class="font-body-md text-body-md text-on-surface-variant mb-stack-sm md:mb-0">© 2024 MicroCred AI.
+                    Institutional Reliability.</p>
+                <div class="flex gap-gutter">
+                    <a class="text-on-surface-variant font-body-md hover:text-secondary underline transition-all"
+                        href="#">Privacy Policy</a>
+                    <a class="text-on-surface-variant font-body-md hover:text-secondary underline transition-all"
+                        href="#">Terms of Service</a>
+                    <a class="text-on-surface-variant font-body-md hover:text-secondary underline transition-all"
+                        href="#">Contact Us</a>
+                </div>
+            </footer>
+        </main>
+    </div>
+</body>
+
+</html>

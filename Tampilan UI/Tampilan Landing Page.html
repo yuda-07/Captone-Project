@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>MicroCred AI - Solusi Skor Kredit UMKM Berbasis AI</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-container": "#7c839b",
+                        "primary-fixed": "#dae2fd",
+                        "primary-fixed-dim": "#bec6e0",
+                        "on-surface-variant": "#45464d",
+                        "on-tertiary-container": "#98805d",
+                        "surface-dim": "#dcd9db",
+                        "on-surface": "#1b1b1d",
+                        "on-primary": "#ffffff",
+                        "on-tertiary-fixed-variant": "#574425",
+                        "on-secondary-fixed": "#001e2c",
+                        "inverse-primary": "#bec6e0",
+                        "on-background": "#1b1b1d",
+                        "inverse-on-surface": "#f3f0f2",
+                        "surface-bright": "#fcf8fa",
+                        "primary": "#000000",
+                        "background": "#fcf8fa",
+                        "tertiary-fixed": "#fcdeb5",
+                        "on-tertiary-fixed": "#271901",
+                        "inverse-surface": "#303032",
+                        "surface-container-highest": "#e4e2e4",
+                        "outline-variant": "#c6c6cd",
+                        "secondary-fixed": "#c4e7ff",
+                        "on-secondary": "#ffffff",
+                        "tertiary": "#000000",
+                        "on-primary-fixed": "#131b2e",
+                        "secondary-fixed-dim": "#7bd0ff",
+                        "on-error-container": "#93000a",
+                        "on-error": "#ffffff",
+                        "outline": "#76777d",
+                        "surface-container-high": "#eae7e9",
+                        "error-container": "#ffdad6",
+                        "surface-tint": "#565e74",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-container": "#004d6a",
+                        "tertiary-container": "#271901",
+                        "surface": "#fcf8fa",
+                        "on-primary-fixed-variant": "#3f465c",
+                        "surface-container-low": "#f6f3f5",
+                        "secondary": "#00668a",
+                        "error": "#ba1a1a",
+                        "primary-container": "#131b2e",
+                        "surface-variant": "#e4e2e4",
+                        "surface-container": "#f0edef",
+                        "tertiary-fixed-dim": "#dec29a",
+                        "secondary-container": "#40c2fd",
+                        "on-secondary-fixed-variant": "#004c69"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "stack-lg": "48px",
+                        "stack-md": "24px",
+                        "margin-mobile": "16px",
+                        "base": "8px",
+                        "container-max": "1280px",
+                        "margin-desktop": "40px",
+                        "stack-sm": "12px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Hanken Grotesk"],
+                        "label-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-lg": ["Hanken Grotesk"],
+                        "display": ["Hanken Grotesk"],
+                        "headline-lg-mobile": ["Hanken Grotesk"],
+                        "label-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "fontWeight": "500" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "display": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "36px", "fontWeight": "600" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fcf8fa;
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: 'Hanken Grotesk', sans-serif;
+        }
+
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 24px;
+        }
+    </style>
+</head>
+
+<body class="text-on-surface">
+    <nav class="docked full-width top-0 bg-surface-container-lowest shadow-sm z-50 sticky">
+        <div class="flex justify-between items-center px-margin-desktop w-full max-w-container-max mx-auto h-16">
+            <div class="text-headline-md font-headline-md font-extrabold text-primary">MicroCred AI</div>
+            <div class="hidden md:flex gap-stack-md items-center">
+                <a class="text-secondary font-bold border-b-2 border-secondary pb-1 font-body-md text-body-md transition-colors duration-200"
+                    href="#">Home</a>
+                <a class="text-on-surface-variant font-medium font-body-md text-body-md hover:text-secondary transition-colors duration-200"
+                    href="#features">Features</a>
+                <a class="text-on-surface-variant font-medium font-body-md text-body-md hover:text-secondary transition-colors duration-200"
+                    href="#about">About</a>
+            </div>
+            <div class="flex gap-base items-center">
+                <button
+                    class="px-6 py-2 rounded-lg font-label-md text-label-md text-on-surface-variant font-medium hover:text-secondary transition-all">Login</button>
+                <button
+                    class="px-6 py-2 rounded-lg bg-primary text-on-primary font-label-md text-label-md font-bold hover:scale-95 transition-transform">Mulai</button>
+            </div>
+        </div>
+    </nav>
+    <header class="relative overflow-hidden pt-stack-lg pb-stack-lg lg:pt-32 lg:pb-40">
+        <div class="max-w-container-max mx-auto px-margin-desktop grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div class="z-10">
+                <span
+                    class="inline-block px-4 py-1.5 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm mb-6 uppercase tracking-wider">Pemberdayaan
+                    UMKM</span>
+                <h1 class="font-display text-display text-primary leading-tight mb-6">AI-Based Credit Scoring for UMKM
+                </h1>
+                <p class="font-body-lg text-body-lg text-on-surface-variant mb-10 max-w-lg">Bantu usaha Anda mendapatkan
+                    analisis kelayakan kredit secara cepat dan objektif menggunakan teknologi AI.</p>
+                <div class="flex flex-wrap gap-stack-sm">
+                    <button
+                        class="px-10 py-4 bg-primary text-on-primary rounded-lg font-headline-md text-headline-md font-bold shadow-lg hover:shadow-xl transition-all hover:translate-y-[-2px] active:scale-95">Mulai
+                        Analisis</button>
+                </div>
+            </div>
+            <div class="relative">
+                <div class="absolute -top-20 -right-20 w-96 h-96 bg-secondary/10 rounded-full blur-3xl"></div>
+                <div
+                    class="relative bg-surface-container-lowest rounded-xl p-6 shadow-2xl border border-outline-variant/30">
+                    <div class="flex items-center justify-between mb-8">
+                        <div>
+                            <p class="text-label-sm font-label-sm text-on-surface-variant">CREDIT HEALTH SCORE</p>
+                            <p class="text-headline-md font-headline-md text-primary">Potensi Tinggi</p>
+                        </div>
+                        <span class="material-symbols-outlined text-secondary text-4xl">analytics</span>
+                    </div>
+                    <div class="flex flex-col items-center py-4">
+                        <div
+                            class="relative w-48 h-48 rounded-full border-[12px] border-surface-container-highest flex items-center justify-center">
+                            <div
+                                class="absolute inset-[-12px] w-48 h-48 rounded-full border-[12px] border-secondary border-r-transparent border-b-transparent rotate-[45deg]">
+                            </div>
+                            <div class="text-center">
+                                <span class="text-5xl font-extrabold text-primary block">782</span>
+                                <span class="text-label-sm text-on-surface-variant">Vantage 4.0</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-8 pt-6 border-t border-outline-variant/20 grid grid-cols-2 gap-4">
+                        <div class="p-4 bg-surface-container rounded-lg">
+                            <p class="text-label-sm text-on-surface-variant">Pertumbuhan</p>
+                            <p class="text-body-md font-bold text-secondary">+14.2%</p>
+                        </div>
+                        <div class="p-4 bg-surface-container rounded-lg">
+                            <p class="text-label-sm text-on-surface-variant">Reliabilitas</p>
+                            <p class="text-body-md font-bold text-secondary">Terverifikasi</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <section class="py-stack-lg bg-surface-container-low" id="features">
+        <div class="max-w-container-max mx-auto px-margin-desktop">
+            <div class="text-center mb-16">
+                <h2 class="font-headline-lg text-headline-lg text-primary mb-4">Fitur Unggulan</h2>
+                <p class="font-body-md text-body-md text-on-surface-variant max-w-2xl mx-auto">Teknologi mutakhir untuk
+                    mendukung pertumbuhan finansial UMKM Indonesia.</p>
+            </div>
+            <div class="bento-grid">
+                <div
+                    class="col-span-12 md:col-span-6 bg-surface-container-lowest p-8 rounded-xl shadow-sm border border-outline-variant/30 flex flex-col justify-between h-72">
+                    <div>
+                        <span class="material-symbols-outlined text-secondary text-5xl mb-6">psychology</span>
+                        <h3 class="font-headline-md text-headline-md text-primary mb-3">Analisis berbasis AI</h3>
+                    </div>
+                    <p class="font-body-md text-body-md text-on-surface-variant">Algoritma cerdas yang memproses ribuan
+                        titik data untuk memahami profil risiko secara mendalam.</p>
+                </div>
+                <div
+                    class="col-span-12 md:col-span-6 bg-primary p-8 rounded-xl shadow-sm flex flex-col justify-between h-72">
+                    <div>
+                        <span class="material-symbols-outlined text-secondary-fixed text-5xl mb-6">fact_check</span>
+                        <h3 class="font-headline-md text-headline-md text-on-primary mb-3">Penilaian kredit otomatis
+                        </h3>
+                    </div>
+                    <p class="font-body-md text-body-md text-on-primary-container">Hasil instan tanpa proses manual yang
+                        berbelit, memberikan kepastian lebih cepat bagi pelaku usaha.</p>
+                </div>
+                <div
+                    class="col-span-12 md:col-span-6 bg-surface-container-highest p-8 rounded-xl flex flex-col justify-between h-72">
+                    <div>
+                        <span class="material-symbols-outlined text-primary text-5xl mb-6">bolt</span>
+                        <h3 class="font-headline-md text-headline-md text-primary mb-3">Proses cepat dan mudah</h3>
+                    </div>
+                    <p class="font-body-md text-body-md text-on-surface-variant">Alur pendaftaran dan input data yang
+                        disederhanakan, selesai hanya dalam hitungan menit.</p>
+                </div>
+                <div
+                    class="col-span-12 md:col-span-6 bg-surface-container-lowest p-8 rounded-xl shadow-sm border border-outline-variant/30 flex flex-col justify-between h-72">
+                    <div>
+                        <span class="material-symbols-outlined text-secondary text-5xl mb-6">bar_chart</span>
+                        <h3 class="font-headline-md text-headline-md text-primary mb-3">Hasil objektif berbasis data
+                        </h3>
+                    </div>
+                    <p class="font-body-md text-body-md text-on-surface-variant">Laporan transparan berdasarkan fakta
+                        performa bisnis, membantu Anda memahami posisi kredit Anda.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="py-stack-lg bg-surface-container-lowest" id="how-it-works">
+        <div class="max-w-container-max mx-auto px-margin-desktop">
+            <div class="text-center mb-16">
+                <h2 class="font-headline-lg text-headline-lg text-primary mb-4">Cara Kerja</h2>
+                <p class="font-body-md text-body-md text-on-surface-variant">Langkah mudah untuk mengetahui kelayakan
+                    kredit usaha Anda.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 relative">
+                <div
+                    class="hidden md:block absolute top-1/2 left-0 w-full h-[2px] bg-outline-variant -translate-y-1/2 z-0">
+                </div>
+                <div class="relative z-10 text-center flex flex-col items-center group">
+                    <div
+                        class="w-16 h-16 rounded-full bg-primary text-on-primary flex items-center justify-center font-headline-md text-headline-md mb-6 ring-8 ring-surface-container-lowest group-hover:scale-110 transition-transform">
+                        1</div>
+                    <h3 class="font-headline-md text-headline-md text-primary mb-2">Isi data usaha</h3>
+                    <p class="font-body-md text-body-md text-on-surface-variant px-4">Lengkapi informasi dasar dan
+                        dokumen pendukung usaha Anda melalui portal kami.</p>
+                </div>
+                <div class="relative z-10 text-center flex flex-col items-center group">
+                    <div
+                        class="w-16 h-16 rounded-full bg-primary text-on-primary flex items-center justify-center font-headline-md text-headline-md mb-6 ring-8 ring-surface-container-lowest group-hover:scale-110 transition-transform">
+                        2</div>
+                    <h3 class="font-headline-md text-headline-md text-primary mb-2">AI menganalisis data</h3>
+                    <p class="font-body-md text-body-md text-on-surface-variant px-4">Sistem AI kami akan memproses data
+                        Anda untuk memberikan penilaian yang komprehensif.</p>
+                </div>
+                <div class="relative z-10 text-center flex flex-col items-center group">
+                    <div
+                        class="w-16 h-16 rounded-full bg-secondary text-on-secondary flex items-center justify-center font-headline-md text-headline-md mb-6 ring-8 ring-surface-container-lowest group-hover:scale-110 transition-transform">
+                        3</div>
+                    <h3 class="font-headline-md text-headline-md text-primary mb-2">Dapatkan hasil credit scoring</h3>
+                    <p class="font-body-md text-body-md text-on-surface-variant px-4">Terima laporan skor kredit dan
+                        analisis kelayakan dalam waktu singkat.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="py-stack-lg bg-primary-container text-on-primary" id="about">
+        <div class="max-w-container-max mx-auto px-margin-desktop text-center">
+            <h2 class="font-display text-display text-on-primary mb-6">Manfaat untuk UMKM</h2>
+            <p class="font-body-lg text-body-lg text-primary-fixed-dim mb-10 max-w-2xl mx-auto opacity-80">Kami hadir
+                untuk membuka akses finansial yang lebih luas bagi pelaku usaha kecil dan menengah melalui teknologi
+                inklusif.</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+                <div class="p-6 bg-white/5 rounded-xl border border-white/10 text-left">
+                    <h4 class="font-headline-md text-headline-md mb-2">Akses Modal</h4>
+                    <p class="text-body-md opacity-70">Meningkatkan peluang disetujuinya pinjaman modal dari berbagai
+                        lembaga keuangan.</p>
+                </div>
+                <div class="p-6 bg-white/5 rounded-xl border border-white/10 text-left">
+                    <h4 class="font-headline-md text-headline-md mb-2">Bunga Kompetitif</h4>
+                    <p class="text-body-md opacity-70">Dengan skor yang baik, Anda bisa menegosiasikan suku bunga yang
+                        lebih rendah.</p>
+                </div>
+                <div class="p-6 bg-white/5 rounded-xl border border-white/10 text-left">
+                    <h4 class="font-headline-md text-headline-md mb-2">Wawasan Bisnis</h4>
+                    <p class="text-body-md opacity-70">Pahami faktor apa saja yang mempengaruhi kesehatan finansial
+                        usaha Anda.</p>
+                </div>
+            </div>
+            <button
+                class="px-12 py-5 bg-secondary text-on-secondary rounded-lg font-headline-md text-headline-md font-bold hover:bg-secondary-container transition-all active:scale-95 shadow-lg">Mulai
+                Analisis Sekarang</button>
+        </div>
+    </section>
+    <footer class="w-full border-t border-outline-variant bg-surface-container-highest">
+        <div
+            class="w-full px-margin-desktop py-12 flex flex-col md:flex-row justify-between items-center max-w-container-max mx-auto">
+            <div class="mb-8 md:mb-0 text-center md:text-left">
+                <div class="text-headline-md font-headline-md text-primary mb-2">MicroCred AI</div>
+                <p class="font-body-md text-body-md text-on-surface-variant">© 2024 MicroCred AI. Inovasi Finansial
+                    Indonesia.</p>
+            </div>
+            <div class="flex flex-wrap justify-center gap-stack-md">
+                <a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-all"
+                    href="#">Home</a>
+                <a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-all"
+                    href="#">Features</a>
+                <a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-all"
+                    href="#">Privacy</a>
+                <a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-all"
+                    href="#">Contact</a>
+            </div>
+            <div class="mt-8 md:mt-0 flex gap-base">
+                <div
+                    class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant hover:bg-secondary hover:text-on-secondary cursor-pointer transition-colors">
+                    <span class="material-symbols-outlined">share</span>
+                </div>
+                <div
+                    class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant hover:bg-secondary hover:text-on-secondary cursor-pointer transition-colors">
+                    <span class="material-symbols-outlined">mail</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
