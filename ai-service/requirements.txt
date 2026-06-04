@@ -1,0 +1,8 @@
+fastapi
+uvicorn
+numpy
+pydantic
+scikit-learn
+keras
+jax[cpu]
+joblib

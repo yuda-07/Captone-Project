@@ -1,0 +1,33 @@
+# Virtual Environments
+ai-service/venv/
+venv/
+.venv/
+env/
+ENV/
+*.pyc
+__pycache__/
+
+# Node Dependencies
+node_modules/
+Backend/node_modules/
+frontend-v2/my-app/node_modules/
+
+# Environment Variables
+.env
+Backend/.env
+frontend-v2/my-app/.env
+
+# IDE / Editor configurations
+.vscode/
+.idea/
+.claude/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
+
+# OS Files
+Thumbs.db
+Desktop.ini
+.DS_Store

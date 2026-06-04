@@ -14,6 +14,13 @@ const findById = async (id) => {
   return res.rows[0] || null;
 };
 
+const findByIdWithPassword = async (id) => {
+  const res = await pool.query(
+    `SELECT * FROM users WHERE id = $1 LIMIT 1`, [id]
+  );
+  return res.rows[0] || null;
+};
+
 const create = async ({ name, email, password }) => {
   const res = await pool.query(
     `INSERT INTO users (name, email, password)
@@ -24,4 +31,12 @@ const create = async ({ name, email, password }) => {
   return res.rows[0];
 };
 
-module.exports = { findByEmail, findById, create };
+const updatePassword = async (id, hashedPassword) => {
+  const res = await pool.query(
+    `UPDATE users SET password = $1 WHERE id = $2 RETURNING id, name, email`,
+    [hashedPassword, id]
+  );
+  return res.rows[0] || null;
+};
+
+module.exports = { findByEmail, findById, findByIdWithPassword, create, updatePassword };

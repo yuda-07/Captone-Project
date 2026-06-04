@@ -1,27 +1,27 @@
 const validatePredict = (req, res, next) => {
   const {
     nama_usaha,
-    usia_pemilik,
-    lama_usaha,
-    pendapatan_bulanan,
-    pengeluaran_bulanan,
-    jumlah_pinjaman,
+    person_age,
+    person_income,
+    person_emp_length,
+    loan_amnt,
+    loan_percent_income,
   } = req.body;
 
   const errs = [];
 
   if (!nama_usaha || nama_usaha.trim() === '')
     errs.push('Nama usaha wajib diisi');
-  if (!usia_pemilik || isNaN(usia_pemilik) || usia_pemilik < 17 || usia_pemilik > 99)
-    errs.push('Usia pemilik tidak valid (17-99 tahun)');
-  if (!lama_usaha || isNaN(lama_usaha) || lama_usaha < 0)
-    errs.push('Lama usaha tidak valid');
-  if (!pendapatan_bulanan || isNaN(pendapatan_bulanan) || pendapatan_bulanan <= 0)
-    errs.push('Pendapatan bulanan wajib diisi dan harus lebih dari 0');
-  if (!pengeluaran_bulanan || isNaN(pengeluaran_bulanan) || pengeluaran_bulanan < 0)
-    errs.push('Pengeluaran bulanan tidak valid');
-  if (!jumlah_pinjaman || isNaN(jumlah_pinjaman) || jumlah_pinjaman <= 0)
+  if (!person_age || isNaN(person_age) || person_age < 17 || person_age > 99)
+    errs.push('Usia tidak valid (17-99 tahun)');
+  if (person_emp_length === undefined || person_emp_length === '' || isNaN(person_emp_length) || person_emp_length < 0)
+    errs.push('Lama bekerja tidak valid');
+  if (!person_income || isNaN(person_income) || person_income <= 0)
+    errs.push('Pendapatan wajib diisi dan harus lebih dari 0');
+  if (!loan_amnt || isNaN(loan_amnt) || loan_amnt <= 0)
     errs.push('Jumlah pinjaman wajib diisi dan harus lebih dari 0');
+  if (loan_percent_income === undefined || loan_percent_income === '' || isNaN(loan_percent_income) || loan_percent_income < 0)
+    errs.push('Rasio pinjaman tidak valid');
 
   if (errs.length > 0)
     return res.status(400).json({ success: false, message: 'Validasi gagal', errors: errs });
@@ -29,4 +29,4 @@ const validatePredict = (req, res, next) => {
   next();
 };
 
-module.exports = { validatePredict };
+module.exports = { validatePredict };
