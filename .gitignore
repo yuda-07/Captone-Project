@@ -31,3 +31,7 @@ frontend-v2/my-app/.env
 Thumbs.db
 Desktop.ini
 .DS_Store
+
+# Large model files / Readmes to ignore
+yuda.md
+microcred_model_final.keras
