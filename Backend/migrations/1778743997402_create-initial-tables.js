@@ -1,10 +1,7 @@
 exports.up = (pgm) => {
-  // Enable UUID extension
-  pgm.createExtension('uuid-ossp', { ifNotExists: true });
-
   // Create users table
   pgm.createTable('users', {
-    id: { type: 'uuid', primaryKey: true, default: pgm.func('uuid_generate_v4()') },
+    id: { type: 'uuid', primaryKey: true, default: pgm.func('gen_random_uuid()') },
     name: { type: 'varchar(255)', notNull: true },
     email: { type: 'varchar(255)', notNull: true, unique: true },
     password: { type: 'varchar(255)', notNull: true },
@@ -13,7 +10,7 @@ exports.up = (pgm) => {
 
   // Create predictions table
   pgm.createTable('predictions', {
-    id: { type: 'uuid', primaryKey: true, default: pgm.func('uuid_generate_v4()') },
+    id: { type: 'uuid', primaryKey: true, default: pgm.func('gen_random_uuid()') },
     user_id: { type: 'uuid', notNull: true, references: 'users', onDelete: 'CASCADE' },
     nama_usaha: { type: 'varchar(255)' },
     usia_pemilik: { type: 'integer' },
@@ -30,7 +27,7 @@ exports.up = (pgm) => {
 
   // Create audit_log table
   pgm.createTable('audit_log', {
-    id: { type: 'uuid', primaryKey: true, default: pgm.func('uuid_generate_v4()') },
+    id: { type: 'uuid', primaryKey: true, default: pgm.func('gen_random_uuid()') },
     user_id: { type: 'uuid', references: 'users', onDelete: 'SET NULL' },
     action: { type: 'varchar(255)', notNull: true },
     details: { type: 'text' },
@@ -48,5 +45,4 @@ exports.down = (pgm) => {
   pgm.dropTable('audit_log', { ifExists: true });
   pgm.dropTable('predictions', { ifExists: true });
   pgm.dropTable('users', { ifExists: true });
-  pgm.dropExtension('uuid-ossp', { ifExists: true });
 };
