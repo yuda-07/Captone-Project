@@ -9,7 +9,7 @@ export default function LandingPage() {
 
       {/* Hero Section */}
       <header className="relative overflow-hidden pt-12 pb-12 lg:pt-32 lg:pb-40">
-        <div className="max-w-container-max mx-auto px-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div className="max-w-container-max mx-auto px-5 md:px-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="z-10">
             <span className="inline-block px-4 py-1.5 rounded-full bg-secondary-fixed text-on-secondary-fixed font-inter text-label-sm mb-6 uppercase tracking-wider">
               Pemberdayaan UMKM
@@ -67,7 +67,7 @@ export default function LandingPage() {
 
       {/* Features Section */}
       <section className="py-12 bg-surface-container-low" id="features">
-        <div className="max-w-container-max mx-auto px-10">
+        <div className="max-w-container-max mx-auto px-5 md:px-10">
           <div className="text-center mb-16">
             <h2 className="text-headline-lg font-hanken text-primary mb-4">Fitur Unggulan</h2>
             <p className="font-inter text-body-md text-on-surface-variant max-w-2xl mx-auto">
@@ -117,7 +117,7 @@ export default function LandingPage() {
 
       {/* How It Works Section */}
       <section className="py-12 bg-surface-container-lowest" id="how-it-works">
-        <div className="max-w-container-max mx-auto px-10">
+        <div className="max-w-container-max mx-auto px-5 md:px-10">
           <div className="text-center mb-16">
             <h2 className="text-headline-lg font-hanken text-primary mb-4">Cara Kerja</h2>
             <p className="font-inter text-body-md text-on-surface-variant">
@@ -147,7 +147,7 @@ export default function LandingPage() {
 
       {/* Benefits / CTA Section */}
       <section className="py-12 bg-primary-container text-on-primary" id="about">
-        <div className="max-w-container-max mx-auto px-10 text-center">
+        <div className="max-w-container-max mx-auto px-5 md:px-10 text-center">
           <h2 className="font-hanken text-display text-on-primary mb-6">Manfaat untuk UMKM</h2>
           <p className="font-inter text-body-lg text-primary-fixed-dim mb-10 max-w-2xl mx-auto opacity-80">
             Kami hadir untuk membuka akses finansial yang lebih luas bagi pelaku usaha kecil dan menengah melalui teknologi inklusif.
