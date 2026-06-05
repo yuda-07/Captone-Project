@@ -44,9 +44,10 @@ export default function DashboardPage() {
       subtitle="Selamat datang di dashboard keuangan Anda."
       headerRight={
         <>
-          <Link to="/analysis" className="flex items-center gap-2 bg-secondary text-on-secondary px-4 py-3 rounded-full text-label-md shadow-sm hover:scale-95 transition-transform">
-            <span className="material-symbols-outlined">add</span>
-            Mulai Analisis Baru
+          <Link to="/analysis" className="flex items-center gap-1 md:gap-2 bg-secondary text-on-secondary px-4 md:px-5 py-2 md:py-3 rounded-full text-label-sm md:text-label-md shadow-sm hover:scale-95 transition-transform whitespace-nowrap">
+            <span className="material-symbols-outlined text-[20px] md:text-[24px]">add</span>
+            <span className="hidden sm:inline">Mulai Analisis Baru</span>
+            <span className="sm:hidden">Analisis</span>
           </Link>
         </>
       }
