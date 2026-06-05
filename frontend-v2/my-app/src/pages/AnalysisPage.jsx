@@ -236,18 +236,19 @@ export default function AnalysisPage() {
             )}
 
             {/* Navigation Buttons */}
-            <div className="pt-8 flex items-center justify-between border-t border-outline-variant mt-8">
+            <div className="pt-8 flex flex-col-reverse md:flex-row items-stretch md:items-center justify-between border-t border-outline-variant mt-8 gap-4 md:gap-0">
               {step > 1 ? (
-                <button onClick={prevStep} className="flex items-center gap-2 text-primary font-bold hover:translate-x-[-4px] transition-transform" type="button">
+                <button onClick={prevStep} className="flex items-center justify-center gap-2 text-primary font-bold transition-transform hover:-translate-x-1 py-3 md:py-0" type="button">
                   <span className="material-symbols-outlined">arrow_back</span> Kembali
                 </button>
-              ) : <div></div>}
+              ) : <div className="hidden md:block"></div>}
+              
               {step < 4 ? (
-                <button onClick={nextStep} className="bg-primary text-on-primary px-10 py-3 rounded-lg font-bold shadow-lg hover:opacity-90 active:scale-95 transition-all flex items-center gap-2">
+                <button onClick={nextStep} className="bg-primary text-on-primary w-full md:w-auto px-6 md:px-10 py-3 rounded-lg font-bold shadow-lg hover:opacity-90 active:scale-95 transition-all flex items-center justify-center gap-2 whitespace-nowrap">
                   Lanjutkan <span className="material-symbols-outlined">arrow_forward</span>
                 </button>
               ) : (
-                <button onClick={handleSubmit} disabled={loading} className="bg-secondary text-on-secondary px-10 py-3 rounded-lg font-bold shadow-lg hover:opacity-90 active:scale-95 transition-all flex items-center gap-2 disabled:opacity-50">
+                <button onClick={handleSubmit} disabled={loading} className="bg-secondary text-on-secondary w-full md:w-auto px-6 md:px-10 py-3 rounded-lg font-bold shadow-lg hover:opacity-90 active:scale-95 transition-all flex items-center justify-center gap-2 disabled:opacity-50 whitespace-nowrap">
                   {loading ? 'Menganalisis...' : 'Kirim & Analisis'}
                   <span className="material-symbols-outlined">send</span>
                 </button>
