@@ -1,17 +1,5 @@
 {
-  "builds": [
-    {
-      "src": "frontend-v2/my-app/package.json",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "frontend-v2/my-app/dist"
-      }
-    }
-  ],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "/frontend-v2/my-app/dist/$1"
-    }
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/" }
   ]
 }
