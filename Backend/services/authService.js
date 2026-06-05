@@ -45,4 +45,48 @@ const login = async ({ email, password }) => {
   };
 };
 
-module.exports = { register, login };
+const resetPassword = async ({ name, email, newPassword }) => {
+  const user = await userRepo.findByEmail(email);
+  if (!user) {
+    const err = new Error('Email tidak ditemukan');
+    err.statusCode = 404;
+    throw err;
+  }
+
+  // Verifikasi nama (case-insensitive & trim)
+  if (user.name.trim().toLowerCase() !== name.trim().toLowerCase()) {
+    const err = new Error('Nama lengkap tidak sesuai');
+    err.statusCode = 400;
+    throw err;
+  }
+
+  const hashed = await bcrypt.hash(newPassword, 10);
+  await userRepo.updatePassword(user.id, hashed);
+
+  await auditRepo.log(user.id, 'RESET_PASSWORD', `User ${email} mereset password`);
+  return { success: true };
+};
+
+const updateProfile = async (userId, { currentPassword, newPassword }) => {
+  const user = await userRepo.findByIdWithPassword(userId);
+  if (!user) {
+    const err = new Error('User tidak ditemukan');
+    err.statusCode = 404;
+    throw err;
+  }
+
+  const valid = await bcrypt.compare(currentPassword, user.password);
+  if (!valid) {
+    const err = new Error('Password lama salah');
+    err.statusCode = 400;
+    throw err;
+  }
+
+  const hashed = await bcrypt.hash(newPassword, 10);
+  await userRepo.updatePassword(userId, hashed);
+
+  await auditRepo.log(userId, 'UPDATE_PASSWORD', `User ${user.email} mengubah password`);
+  return { success: true };
+};
+
+module.exports = { register, login, resetPassword, updateProfile };

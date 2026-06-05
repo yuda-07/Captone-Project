@@ -12,8 +12,13 @@ const { errorHandler } = require('./middlewares/errorMiddleware');
 const app  = express();
 const PORT = process.env.PORT || 3000;
 
-// ─── Global Middleware ─────────────────────────────
-app.use(cors());
+// ─── CORS ──────────────────────────────────────────────
+app.use(cors({
+  origin: '*',
+  methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+}));
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
