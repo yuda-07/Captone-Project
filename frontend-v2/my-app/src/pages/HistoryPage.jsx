@@ -90,40 +90,42 @@ export default function HistoryPage() {
         <div className="bg-surface-container-lowest rounded-xl shadow-sm border border-outline-variant/30 overflow-hidden">
           {filtered.length > 0 ? (
             <>
-              <table className="w-full text-left border-collapse">
-                <thead>
-                  <tr className="bg-surface-container-low border-b border-outline-variant">
-                    <th className="py-3 px-6 text-label-md text-on-surface-variant">Nama Usaha</th>
-                    <th className="py-3 px-6 text-label-md text-on-surface-variant">Tanggal</th>
-                    <th className="py-3 px-6 text-label-md text-on-surface-variant text-center">Score</th>
-                    <th className="py-3 px-6 text-label-md text-on-surface-variant">Status</th>
-                    <th className="py-3 px-6 text-label-md text-on-surface-variant text-right">Action</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-outline-variant/30">
-                  {filtered.map((item) => (
-                    <tr key={item.id} className="hover:bg-surface-container-low transition-colors">
-                      <td className="py-4 px-6"><span className="text-label-md text-on-surface">{item.nama_usaha || '-'}</span></td>
-                      <td className="py-4 px-6"><span className="text-body-md text-on-surface-variant">{formatDate(item.created_at)}</span></td>
-                      <td className="py-4 px-6 text-center">
-                        {item.score != null ? (
-                          <span className={`inline-flex items-center justify-center w-12 h-12 rounded-full border-4 font-bold text-label-md ${item.score >= 600 ? 'border-secondary/20 text-secondary' : 'border-error/20 text-error'}`}>
-                            {item.score}
-                          </span>
-                        ) : (
-                          <span className="inline-flex items-center justify-center w-12 h-12 rounded-full border-4 border-outline/20 text-on-surface-variant font-bold text-[10px]">N/A</span>
-                        )}
-                      </td>
-                      <td className="py-4 px-6"><StatusBadge status={item.status} /></td>
-                      <td className="py-4 px-6 text-right">
-                        <Link to={`/result/${item.id}`} className="text-secondary text-label-md hover:underline inline-flex items-center gap-1">
-                          Details <span className="material-symbols-outlined text-[18px]">chevron_right</span>
-                        </Link>
-                      </td>
+              <div className="overflow-x-auto w-full">
+                <table className="w-full text-left border-collapse min-w-[600px]">
+                  <thead>
+                    <tr className="bg-surface-container-low border-b border-outline-variant">
+                      <th className="py-3 px-6 text-label-md text-on-surface-variant whitespace-nowrap">Nama Usaha</th>
+                      <th className="py-3 px-6 text-label-md text-on-surface-variant whitespace-nowrap">Tanggal</th>
+                      <th className="py-3 px-6 text-label-md text-on-surface-variant text-center whitespace-nowrap">Score</th>
+                      <th className="py-3 px-6 text-label-md text-on-surface-variant whitespace-nowrap">Status</th>
+                      <th className="py-3 px-6 text-label-md text-on-surface-variant text-right whitespace-nowrap">Action</th>
                     </tr>
-                  ))}
-                </tbody>
-              </table>
+                  </thead>
+                  <tbody className="divide-y divide-outline-variant/30">
+                    {filtered.map((item) => (
+                      <tr key={item.id} className="hover:bg-surface-container-low transition-colors">
+                        <td className="py-4 px-6 whitespace-nowrap"><span className="text-label-md text-on-surface">{item.nama_usaha || '-'}</span></td>
+                        <td className="py-4 px-6 whitespace-nowrap"><span className="text-body-md text-on-surface-variant">{formatDate(item.created_at)}</span></td>
+                        <td className="py-4 px-6 text-center whitespace-nowrap">
+                          {item.score != null ? (
+                            <span className={`inline-flex items-center justify-center w-12 h-12 rounded-full border-4 font-bold text-label-md ${item.score >= 600 ? 'border-secondary/20 text-secondary' : 'border-error/20 text-error'}`}>
+                              {item.score}
+                            </span>
+                          ) : (
+                            <span className="inline-flex items-center justify-center w-12 h-12 rounded-full border-4 border-outline/20 text-on-surface-variant font-bold text-[10px]">N/A</span>
+                          )}
+                        </td>
+                        <td className="py-4 px-6 whitespace-nowrap"><StatusBadge status={item.status} /></td>
+                        <td className="py-4 px-6 text-right whitespace-nowrap">
+                          <Link to={`/result/${item.id}`} className="text-secondary text-label-md hover:underline inline-flex items-center gap-1">
+                            Details <span className="material-symbols-outlined text-[18px]">chevron_right</span>
+                          </Link>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
 
               {/* Pagination info */}
               <div className="px-6 py-3 flex justify-between items-center bg-surface-container-low">
